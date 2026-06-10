@@ -1,0 +1,18 @@
+@use '@carbon/react';
+
+.cds--list--ordered {
+  padding-left: 2rem !important;
+}
+
+.cds--side-nav {
+  z-index: 10000;
+}
+
+/* Forzar que el botón de menú tipo hamburguesa se vea en PC */
+.cds--header__menu-toggle {
+  display: block !important;
+}
+.cds--header__action {
+  display: block !important;
+}
+
