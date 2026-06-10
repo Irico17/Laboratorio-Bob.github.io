@@ -1,5 +1,5 @@
 import React from 'react';
-import { Accordion, AccordionItem, Tile, StructuredListWrapper, StructuredListHead, StructuredListRow, StructuredListCell, StructuredListBody } from '@carbon/react';
+import { Accordion, AccordionItem, Tile, CodeSnippet } from '@carbon/react';
 
 const Workflows = () => {
   return (
@@ -11,6 +11,66 @@ const Workflows = () => {
       <p className="cds--body-long-01" style={{ marginBottom: '2rem' }}>
         A diferencia de los laboratorios tradicionales donde ejecutas comandos manualmente, aquí el protagonista es <strong>GitHub Actions</strong>. Hemos configurado eventos que "despiertan" a Bob Shell en el servidor, permitiéndole analizar tu código automáticamente.
       </p>
+
+      <Tile style={{ marginBottom: '2rem', backgroundColor: '#e5f6ff' }}>
+        <h3 className="cds--heading-expressive-03" style={{ marginBottom: '1rem' }}>Conceptos Básicos de GitHub Actions</h3>
+        <p className="cds--body-long-01" style={{ marginBottom: '1rem' }}>
+          Para entender los archivos <code>.yml</code> de la carpeta <code>.github/workflows</code>, debes conocer su nomenclatura básica:
+        </p>
+        <ul style={{ paddingLeft: '1.5rem', lineHeight: '1.8', marginBottom: '1rem' }} className="cds--list--unordered">
+          <li><strong>Triggers (<code>on:</code>)</strong>: Es el evento que dispara el workflow. Puede ser un <code>push</code>, la creación de un <code>pull_request</code>, o manual (<code>workflow_dispatch</code>).</li>
+          <li><strong>Jobs</strong>: Representan un conjunto de tareas que se ejecutan en un <em>Runner</em> (un servidor de GitHub).</li>
+          <li><strong>Steps</strong>: Son los comandos individuales dentro de un Job. Aquí es donde descargamos Bob, leemos los archivos y ejecutamos los análisis.</li>
+        </ul>
+      </Tile>
+
+      <h2 className="cds--heading-expressive-04" style={{ marginBottom: '1rem' }}>Anatomía de un Workflow con Bob</h2>
+      <Tile style={{ marginBottom: '2rem' }}>
+        <p className="cds--body-long-01" style={{ marginBottom: '1rem' }}>
+          Veamos un ejemplo de código real (como el que está en <code>review-pr-with-skills.yml</code>) para entender las partes clave del código que le da vida a Bob y cómo agregar tus propias Skills:
+        </p>
+        
+        <h4 className="cds--heading-expressive-02" style={{ marginBottom: '0.5rem' }}>1. Clonar el Código</h4>
+        <CodeSnippet type="multi" style={{ marginBottom: '1rem' }}>
+{`- name: Checkout code
+  uses: actions/checkout@v4
+  with:
+    fetch-depth: 0`}
+        </CodeSnippet>
+        <p className="cds--body-long-01" style={{ marginBottom: '1.5rem' }}>
+          Este paso estándar de GitHub Actions descarga el código de tu repositorio al servidor (Runner) para que Bob pueda leerlo. El <code>fetch-depth: 0</code> asegura que se traiga todo el historial, necesario para que Bob pueda comparar qué código es nuevo y qué código es viejo.
+        </p>
+
+        <h4 className="cds--heading-expressive-02" style={{ marginBottom: '0.5rem' }}>2. Construir el Prompt y Ejecutar Bob</h4>
+        <CodeSnippet type="multi" style={{ marginBottom: '1rem' }}>
+{`- name: Execute Bob
+  env:
+    BOBSHELL_API_KEY: \${{ secrets.BOBSHELL_API_KEY }}
+  run: |
+    # 1. Leer el código y la skill
+    CODE=$(cat archivo.py)
+    SKILL=$(cat .bob/skills/code-review/SKILL.md)
+    
+    # 2. Construir el prompt
+    PROMPT="Analiza este código usando estas reglas:
+    $SKILL
+    
+    Código:
+    $CODE"
+    
+    # 3. Ejecutar Bob
+    bob --accept-license --yolo -p "$PROMPT"`}
+        </CodeSnippet>
+        <p className="cds--body-long-01">
+          <strong>Aquí ocurre la magia:</strong>
+          <br/><br/>
+          Primero, inyectamos la llave secreta en el entorno (<code>env:</code>) para que Bob pueda autenticarse. Luego, en lugar de comandos inventados, construimos un <strong>Prompt</strong> masivo. Leemos el contenido de los archivos fuente y le concatenamos el texto de nuestras reglas (Skills).
+          <br/><br/>
+          Finalmente llamamos a <code>bob -p "$PROMPT"</code> (o usando tuberías con <code>&lt; archivo_prompt.txt</code>) para que procese todo de una vez.
+          <br/><br/>
+          <strong>¿Cómo agregas tu propia Skill al Workflow?</strong> Es tan sencillo como cambiar la ruta de donde se lee la skill en el código de arriba. En lugar de <code>cat .bob/skills/code-review/SKILL.md</code>, lo cambias por la ruta de tu nueva creación: <code>cat .bob/skills/mi-nueva-skill/SKILL.md</code>. Bob ingerirá esas instrucciones y las aplicará inmediatamente al análisis.
+        </p>
+      </Tile>
 
       <h2 className="cds--heading-expressive-04" style={{ marginBottom: '1rem' }}>Análisis y Revisión de Código</h2>
       <Accordion style={{ marginBottom: '2rem' }}>

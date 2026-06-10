@@ -55,7 +55,7 @@ cd bob-shell-integration`}
 
         <h4 className="cds--heading-expressive-02" style={{ marginBottom: '0.5rem' }}>B. Llave de Bob Shell (\`BOBSHELL_API_KEY\`)</h4>
         <p className="cds--body-long-01">
-          Solicita al instructor del laboratorio tu llave de acceso para la API de IBM Bob Shell.
+          Solicita al instructor del laboratorio tu llave de acceso para autenticar al agente Bob Shell en tus workflows.
         </p>
       </Tile>
 
@@ -76,7 +76,7 @@ cd bob-shell-integration`}
             Agrega la llave de Bob:
             <ul style={{ marginLeft: '1.5rem', marginTop: '0.5rem' }}>
               <li><strong>Name:</strong> <code>BOBSHELL_API_KEY</code></li>
-              <li><strong>Secret:</strong> <em>La llave provista por IBM</em></li>
+              <li><strong>Secret:</strong> <em>La llave provista en el laboratorio</em></li>
             </ul>
           </ListItem>
         </OrderedList>
