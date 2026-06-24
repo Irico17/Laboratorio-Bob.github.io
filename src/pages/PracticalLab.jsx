@@ -180,11 +180,16 @@ git push origin dev`}
       </h2>
       <Accordion style={{ marginBottom: '2rem' }}>
         <AccordionItem title="Revisión instantánea al hacer push (sin PR)">
-          <p className="cds--body-long-01" style={{ marginBottom: '0.5rem' }}>
-            Haz <strong>commit y push</strong> a una rama sin PR abierto. El pipeline <code>default</code>{' '}
-            (<strong>BobShell Commit Review</strong>) extrae solo tu diff y publica un artifact{' '}
-            <code>bobshell-commit-review.md</code> con el veredicto.
+          <p className="cds--body-long-01" style={{ marginBottom: '0.75rem' }}>
+            Haz <strong>commit y push</strong> a una rama sin PR abierto. El pipeline <code>default</code> (<strong>BobShell Commit Review</strong>) extrae solo tu diff y publica un artifact <code>bobshell-commit-review.md</code> con el veredicto.
           </p>
+          <p className="cds--body-long-01" style={{ marginBottom: '0.5rem' }}>
+            Puedes probarlo rápidamente creando y subiendo un commit vacío desde tu terminal con estos comandos:
+          </p>
+          <CodeSnippet type="multi" style={{ marginBottom: '0.5rem' }}>
+{`git commit --allow-empty -m "chore: probar pipeline de revision de commit instantaneo"
+git push origin dev`}
+          </CodeSnippet>
         </AccordionItem>
         <AccordionItem title="Análisis profundo de toda la rama (bob-deep-review)">
           <p className="cds--body-long-01" style={{ marginBottom: '0.5rem' }}>
