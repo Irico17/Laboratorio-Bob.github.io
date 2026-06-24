@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { Tile, StructuredListWrapper, StructuredListHead, StructuredListRow, StructuredListCell, StructuredListBody } from '@carbon/react';
+import LabHeader from '../components/LabHeader';
 import mermaid from 'mermaid';
 
 mermaid.initialize({
@@ -27,10 +28,10 @@ const MermaidChart = ({ chart }) => {
 };
 
 const rawChart = `flowchart LR
-    A["GitHub Event (Push, PR)"] -->|"Webhook"| B("GitHub Actions Runner")
+    A["Bitbucket Event (Push, PR)"] -->|"Trigger"| B("Bitbucket Pipelines Runner")
     B -->|"Checkout Code & Skills"| C{"Bob Shell"}
     C -->|"Security Feedback"| C
-    C -->|"gh API (Comments/PRs)"| A
+    C -->|"Bitbucket REST API (curl)"| A
 
     style A fill:#f4f4f4,stroke:#333,stroke-width:2px,color:#000
     style B fill:#0f62fe,stroke:#0f62fe,stroke-width:2px,color:#fff
@@ -40,13 +41,10 @@ const rawChart = `flowchart LR
 const Architecture = () => {
   return (
     <div style={{ maxWidth: '900px', margin: '0 auto', paddingBottom: '4rem' }}>
-      <h1 className="cds--heading-expressive-05" style={{ marginBottom: '1.5rem', marginTop: '2rem' }}>
-        Arquitectura de Integración
-      </h1>
-      
-      <p className="cds--body-long-01" style={{ marginBottom: '2rem' }}>
-        Para entender cómo logramos la automatización, es crucial visualizar el ciclo de vida de una petición. La interacción es completamente asíncrona y está impulsada por eventos.
-      </p>
+      <LabHeader eyebrow="LABORATORIO 4 · PASO 2 DE 4" title="Arquitectura de la integración" duration="≈ 5 min" accent="#0f62fe">
+        Para entender cómo logramos la automatización, visualicemos el ciclo de vida de una
+        petición: la interacción es completamente asíncrona y está impulsada por eventos.
+      </LabHeader>
 
       <Tile style={{ marginBottom: '3rem', padding: '2rem', display: 'flex', justifyContent: 'center' }}>
         <div style={{ width: '100%' }}>
@@ -65,20 +63,20 @@ const Architecture = () => {
         </StructuredListHead>
         <StructuredListBody>
           <StructuredListRow>
-            <StructuredListCell><strong>GitHub Repository</strong></StructuredListCell>
-            <StructuredListCell>El origen de la verdad. Donde reside el código y ocurren los eventos (Ej. un desarrollador hace <code>git push</code>).</StructuredListCell>
+            <StructuredListCell><strong>Bitbucket Repository</strong></StructuredListCell>
+            <StructuredListCell>El origen de la verdad. Donde reside el código y ocurren los eventos (Ej. un desarrollador hace <code>git push</code> o abre un Pull Request).</StructuredListCell>
           </StructuredListRow>
           <StructuredListRow>
-            <StructuredListCell><strong>GitHub Actions Runner</strong></StructuredListCell>
-            <StructuredListCell>Una máquina virtual (típicamente Ubuntu) que arranca al detectar el evento. Clona el código fuente e instala el binario de Bob Shell.</StructuredListCell>
+            <StructuredListCell><strong>Bitbucket Pipelines Runner</strong></StructuredListCell>
+            <StructuredListCell>Un contenedor Docker (basado en la imagen definida en <code>bitbucket-pipelines.yml</code>) que arranca al detectar el evento. Clona el código fuente e instala el binario de Bob Shell.</StructuredListCell>
           </StructuredListRow>
           <StructuredListRow>
             <StructuredListCell><strong>Bob Shell</strong></StructuredListCell>
-            <StructuredListCell>El agente inteligente. Toma el código fuente, lee las reglas (<em>Skills</em>) del repositorio, procesa la información para detectar anomalías y genera una respuesta automatizada (diagnóstico o código parcheado).</StructuredListCell>
+            <StructuredListCell>El agente inteligente. Toma el código fuente, lee las <em>Skills</em> del directorio <code>.bob/skills/</code>, procesa la información para detectar anomalías y genera una respuesta automatizada (diagnóstico o código parcheado).</StructuredListCell>
           </StructuredListRow>
           <StructuredListRow>
-            <StructuredListCell><strong>GitHub CLI (gh)</strong></StructuredListCell>
-            <StructuredListCell>Herramienta utilizada por el runner para inyectar la respuesta de Bob de vuelta a GitHub en forma de Comentarios, Issues o etiquetas.</StructuredListCell>
+            <StructuredListCell><strong>Bitbucket REST API + curl</strong></StructuredListCell>
+            <StructuredListCell>Herramienta usada por el runner para inyectar la respuesta de Bob de vuelta a Bitbucket: comentarios en PRs, ramas nuevas y Pull Requests de corrección.</StructuredListCell>
           </StructuredListRow>
         </StructuredListBody>
       </StructuredListWrapper>
