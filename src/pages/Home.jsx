@@ -28,6 +28,70 @@ const Home = () => {
         </div>
       </div>
 
+      {/* ── Requisitos y Descargas ───────────────────────────── */}
+      <Grid style={{ marginTop: '2.5rem', marginBottom: '1rem' }}>
+        <Column sm={4} md={8} lg={16}>
+          <h2 className="cds--heading-expressive-04" style={{ marginBottom: '1rem' }}>
+            Requisitos y Descargas
+          </h2>
+        </Column>
+      </Grid>
+      <Grid style={{ marginBottom: '2.5rem' }} narrow>
+        <Column sm={4} md={4} lg={8} style={{ paddingRight: '1rem', marginBottom: '1rem' }}>
+          <Tile style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            <div>
+              <Code size={28} style={{ color: '#24a148', marginBottom: '0.75rem' }} />
+              <h3 className="cds--heading-expressive-03" style={{ marginBottom: '0.75rem' }}>
+                IBM Bob CLI
+              </h3>
+              <p className="cds--body-long-01" style={{ marginBottom: '1.5rem' }}>
+                Descarga e instala la interfaz de línea de comandos de Bob en tu terminal local (requiere Node.js 20 o superior).
+              </p>
+            </div>
+            <a 
+              href="https://bob.ibm.com/download" 
+              target="_blank" 
+              rel="noreferrer" 
+              className="cds--btn cds--btn--secondary"
+              style={{ width: '100%', textAlign: 'center', display: 'inline-block', textDecoration: 'none' }}
+            >
+              Descargar Bob CLI
+            </a>
+          </Tile>
+        </Column>
+        <Column sm={4} md={4} lg={8} style={{ marginBottom: '1rem' }}>
+          <Tile style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            <div>
+              <Document size={28} style={{ color: '#0f62fe', marginBottom: '0.75rem' }} />
+              <h3 className="cds--heading-expressive-03" style={{ marginBottom: '0.75rem' }}>
+                Bases de Código para Laboratorios
+              </h3>
+              <p className="cds--body-long-01" style={{ marginBottom: '1.5rem' }}>
+                Descarga el código base vulnerable y estructurado para realizar los retos locales paso a paso.
+              </p>
+            </div>
+            <div style={{ display: 'flex', gap: '1rem' }}>
+              <a 
+                href={`${import.meta.env.BASE_URL}downloads/lab1-2.zip`}
+                download="lab1-2-app-vulnerable.zip"
+                className="cds--btn cds--btn--primary"
+                style={{ flex: 1, textAlign: 'center', textDecoration: 'none', padding: '0.75rem 0.5rem', fontSize: '0.875rem' }}
+              >
+                Descargar Labs 1 &amp; 2
+              </a>
+              <a 
+                href={`${import.meta.env.BASE_URL}downloads/lab3.zip`}
+                download="lab3-app-arquitectura.zip"
+                className="cds--btn cds--btn--primary"
+                style={{ flex: 1, textAlign: 'center', textDecoration: 'none', padding: '0.75rem 0.5rem', fontSize: '0.875rem' }}
+              >
+                Descargar Lab 3
+              </a>
+            </div>
+          </Tile>
+        </Column>
+      </Grid>
+
       {/* ── ¿Qué es Bob? ─────────────────────────────────────── */}
       <Grid style={{ marginTop: '2.5rem', marginBottom: '1rem' }}>
         <Column sm={4} md={8} lg={16}>
@@ -55,13 +119,12 @@ const Home = () => {
           <Tile style={{ height: '100%' }}>
             <FlowConnection size={28} style={{ color: '#8a3ffc', marginBottom: '0.75rem' }} />
             <h3 className="cds--heading-expressive-03" style={{ marginBottom: '0.75rem' }}>
-              Skills + multi-modelo + gobernanza
+              Skills + gobernanza
             </h3>
             <p className="cds--body-long-01">
-              Bob enruta cada tarea al modelo adecuado (Anthropic Claude, Mistral, IBM
-              Granite) y usa <strong>Skills</strong>: instrucciones reutilizables que lo
-              especializan. En estos labs lo conectamos a <strong>Bitbucket Pipelines</strong>{' '}
-              para que actúe como revisor de código y QA autónomo.
+              Bob usa <strong>Skills</strong>: instrucciones reutilizables que lo
+              especializan para tareas específicas. En este laboratorio lo conectamos con <strong>Bitbucket Pipelines</strong>{' '}
+              para que actúe como revisor de código autónomo y resuelva issues automáticamente.
             </p>
           </Tile>
         </Column>
