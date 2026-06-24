@@ -10,8 +10,22 @@ const SetupGuide = () => {
       </LabHeader>
 
       <Tile style={{ marginBottom: '2rem' }}>
-        <h3 className="cds--heading-expressive-03" style={{ marginBottom: '1rem' }}>Fase 1: Clona el repo base y súbelo al tuyo</h3>
-        <OrderedList>
+        <h3 className="cds--heading-expressive-03" style={{ marginBottom: '1rem' }}>Fase 1: Obtener el repositorio base en tu cuenta</h3>
+        <p className="cds--body-long-01" style={{ marginBottom: '1.5rem' }}>
+          Para que los pipelines de Bitbucket se ejecuten bajo tu control, necesitas tener una copia del repositorio base con sus dos ramas principales (<code>master</code> y <code>dev</code>) en tu propio espacio de trabajo. Puedes hacerlo de dos formas:
+        </p>
+
+        <h4 className="cds--heading-expressive-02" style={{ marginBottom: '0.5rem', color: '#0f62fe' }}>Opción A (Recomendada - Fork directo):</h4>
+        <OrderedList style={{ marginBottom: '2rem', marginLeft: '1rem' }}>
+          <ListItem>Ingresa al repositorio base del instructor en Bitbucket Cloud.</ListItem>
+          <ListItem>Haz clic en el botón <strong>"Fork"</strong> (ubicado en el menú de tres puntos o en la esquina superior derecha).</ListItem>
+          <ListItem>Selecciona tu propio <strong>Workspace</strong> como destino del Fork y asigna un nombre al repositorio (ej. <code>bob-lab-practica</code>).</ListItem>
+          <ListItem>Asegúrate de marcar la opción para copiar todas las ramas y confirma la creación del Fork.</ListItem>
+          <ListItem>Ve a la sección <strong>Branches</strong> de tu nuevo repositorio y confirma que tienes tanto la rama <code>master</code> como la rama <code>dev</code> creadas.</ListItem>
+        </OrderedList>
+
+        <h4 className="cds--heading-expressive-02" style={{ marginBottom: '0.5rem', color: '#0f62fe' }}>Opción B (Clonado y subida manual):</h4>
+        <OrderedList style={{ marginLeft: '1rem' }}>
           <ListItem>Crea un repositorio <strong>vacío</strong> en tu workspace de Bitbucket Cloud (ej. <code>bob-lab-practica</code>), <strong>sin</strong> README ni <code>.gitignore</code>.</ListItem>
           <ListItem>
             Clona el repositorio base del instructor a tu máquina:
