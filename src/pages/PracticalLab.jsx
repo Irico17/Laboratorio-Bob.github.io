@@ -193,6 +193,17 @@ git push origin dev`}
             <code>bobshell-deep-review.md</code> con el reporte completo de vulnerabilidades.
           </p>
         </AccordionItem>
+        <AccordionItem title="¿Cómo funciona bob-label-issue y la integración con Jira?">
+          <p className="cds--body-long-01" style={{ marginBottom: '0.75rem' }}>
+            El pipeline <code>bob-label-issue</code> está pensado para conectarse de forma opcional a <strong>Jira Cloud</strong> mediante su API REST. Bob lee la descripción del ticket de Jira, analiza de qué se trata (si es un bug, una mejora, una tarea de seguridad) y le asigna etiquetas y prioridades automáticamente en tu tablero de Jira.
+          </p>
+          <p className="cds--body-long-01" style={{ marginBottom: '0.75rem' }}>
+            <strong>¿Es necesario para este laboratorio?</strong> No, es totalmente opcional (diseñado para la rama enterprise). Dado que aquí no estamos integrando Jira, no tienes que configurar las variables <code>JIRA_*</code>.
+          </p>
+          <p className="cds--body-long-01" style={{ marginBottom: 0 }}>
+            Si deseas clasificar elementos de forma nativa en Bitbucket, puedes utilizar el pipeline <code>bob-label-pr</code> pasándole el <code>PR_ID</code> de tu Pull Request de forma manual.
+          </p>
+        </AccordionItem>
         <AccordionItem title="¿Cómo reinicio el laboratorio?">
           <p className="cds--body-long-01" style={{ marginBottom: '0.75rem' }}>
             Para volver a empezar con el código vulnerable original:

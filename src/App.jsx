@@ -20,10 +20,14 @@ import {
   Settings,
   Application,
   Rocket,
+  Document,
+  Code,
 } from '@carbon/icons-react';
 
 // Pages
 import Home from './pages/Home';
+import Lab1 from './pages/Lab1';
+import Lab2 from './pages/Lab2';
 import Lab3 from './pages/Lab3';
 import Architecture from './pages/Architecture';
 import SetupGuide from './pages/SetupGuide';
@@ -59,6 +63,24 @@ const App = () => {
         <SideNavItems>
           <SideNavLink renderIcon={HomeIcon} as={Link} to="/" isActive={path === '/'}>
             Inicio
+          </SideNavLink>
+
+          <SideNavLink
+            renderIcon={Document}
+            as={Link}
+            to="/lab1"
+            isActive={path === '/lab1'}
+          >
+            Lab 1 · Documentación
+          </SideNavLink>
+
+          <SideNavLink
+            renderIcon={Code}
+            as={Link}
+            to="/lab2"
+            isActive={path === '/lab2'}
+          >
+            Lab 2 · Mejoras
           </SideNavLink>
 
           <SideNavLink
@@ -105,6 +127,8 @@ const App = () => {
         <Theme theme="white">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/lab1" element={<Lab1 />} />
+            <Route path="/lab2" element={<Lab2 />} />
             <Route path="/lab3" element={<Lab3 />} />
             <Route path="/lab4/arquitectura" element={<Architecture />} />
             <Route path="/lab4/setup" element={<SetupGuide />} />

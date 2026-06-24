@@ -22,6 +22,8 @@
    Estilos del laboratorio (sobre Carbon)
    ============================================================ */
 
+$lab1: #0043ce;
+$lab2: #da1e28;
 $lab3: #8a3ffc;
 $lab4: #0f62fe;
 
@@ -67,6 +69,8 @@ $lab4: #0f62fe;
   background: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.3);
 
+  &--lab1 { box-shadow: inset 3px 0 0 $lab1; }
+  &--lab2 { box-shadow: inset 3px 0 0 $lab2; }
   &--lab3 { box-shadow: inset 3px 0 0 $lab3; }
   &--lab4 { box-shadow: inset 3px 0 0 #78a9ff; }
 }
@@ -103,6 +107,8 @@ $lab4: #0f62fe;
     margin-top: 1rem;
   }
 
+  &--lab1 { border-top-color: $lab1; svg { color: $lab1; } .lab-card__cta { color: $lab1; } }
+  &--lab2 { border-top-color: $lab2; svg { color: $lab2; } .lab-card__cta { color: $lab2; } }
   &--lab3 { border-top-color: $lab3; svg { color: $lab3; } .lab-card__cta { color: $lab3; } }
   &--lab4 { border-top-color: $lab4; svg { color: $lab4; } .lab-card__cta { color: $lab4; } }
 }
@@ -227,8 +233,22 @@ $lab4: #0f62fe;
     margin-right: 0.5rem;
     vertical-align: middle;
 
+    &--lab1 { background: $lab1; }
+    &--lab2 { background: $lab2; }
     &--lab3 { background: $lab3; }
     &--lab4 { background: $lab4; }
   }
 }
+
+/* ── Agrandar código y snippets ────────────────────────── */
+.cds--code-snippet,
+.cds--code-snippet-container,
+.cds--code-snippet__code,
+.cds--code-snippet-container code,
+pre,
+code {
+  font-size: 0.95rem !important;
+  line-height: 1.5 !important;
+}
+
 

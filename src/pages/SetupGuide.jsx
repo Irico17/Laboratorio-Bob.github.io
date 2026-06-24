@@ -100,6 +100,14 @@ git push origin --tags`}
             </ul>
           </ListItem>
         </OrderedList>
+        <InlineNotification
+          kind="info"
+          lowContrast
+          hideCloseButton
+          title="Variables simplificadas"
+          subtitle="Solo necesitas estas dos variables. No es necesario configurar variables adicionales de autenticación básica como BITBUCKET_USERNAME o BITBUCKET_API_KEY."
+          style={{ marginTop: '1rem', marginBottom: 0 }}
+        />
       </Tile>
 
       <InlineNotification

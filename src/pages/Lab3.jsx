@@ -48,7 +48,7 @@ const Lab3 = () => {
           Necesitas <code>bob</code> instalado (<a href="https://bob.ibm.com/download" target="_blank" rel="noreferrer">bob.ibm.com/download</a>, requiere Node 22+). Luego clona el proyecto de práctica de este laboratorio — una pequeña app con la arquitectura deliberadamente desordenada:
         </p>
         <CodeSnippet type="multi" style={{ marginBottom: 0 }}>
-{`git clone https://bitbucket.org/TU_WORKSPACE/lab3-demo.git
+{`git clone git@bitbucket.org:bob-shell-integration/lab3-demo.git
 cd lab3-demo`}
         </CodeSnippet>
       </Tile>
@@ -116,21 +116,22 @@ cd lab3-demo`}
           Copia este prompt en Bob para que genere la Skill por ti:
         </p>
         <CodeSnippet type="multi" style={{ marginBottom: '1rem' }}>
-{`Crea una nueva Skill para revisión de arquitectura. Reglas estrictas:
+{`Crea una nueva Skill avanzada para revisión de arquitectura. Reglas estrictas:
 
 1. Crea la carpeta .bob/skills/architecture-review/ con un archivo SKILL.md.
-2. El SKILL.md debe empezar con front matter YAML:
+2. El SKILL.md debe empezar con este front matter YAML exacto (para garantizar la auto-activación):
    ---
    name: architecture-review
-   description: <descripción clara de cuándo activar esta skill>
+   description: Use this skill when the user asks to review, refactor, modularize, analyze circular imports, or reorganize the architecture of a multi-file software project.
    ---
-3. Debajo, escribe instrucciones que OBLIGUEN a Bob a, en este orden:
-   (a) mapear el estado actual archivo por archivo,
-   (b) producir una TABLA de problemas con severidad y archivo:línea,
-   (c) proponer una arquitectura objetivo CON un diagrama Mermaid,
-   (d) dar un plan de migración por pasos pequeños,
-   (e) cerrar con un resumen ejecutivo de 3-5 viñetas.
-4. Sé muy estricto: el formato de salida debe ser siempre el mismo.`}
+3. Instrucciones de ejecución para Bob (escríbelas debajo del YAML):
+   (a) Mapeo General: Identificar y listar el propósito de cada archivo en el workspace.
+   (b) Análisis de Acoplamiento y Dependencias: Detectar explícitamente dependencias circulares entre módulos, responsabilidades mezcladas y duplicidad de utilidades o conexiones a BD.
+   (c) Tabla de Hallazgos: Tabla de 4 columnas (Archivo y Línea | Problema Detectado | Severidad (Crítica/Alta/Media) | Impacto).
+   (d) Arquitectura Objetivo: Proponer un diseño limpio en capas (Separación de Conceptos) y renderizarlo usando un diagrama Mermaid de flujo/capas.
+   (e) Plan de Migración: Listar pasos secuenciales libres de dependencias para migrar el código desordenado al diseño objetivo sin romper funcionalidad.
+   (f) Cierre: Resumen ejecutivo de 3 viñetas concisas.
+4. Restricción de salida: Evita introducciones conversacionales largas. Ve directo al formato estructurado.`}
         </CodeSnippet>
 
         <InlineNotification

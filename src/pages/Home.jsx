@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { Grid, Column, Tile, ClickableTile } from '@carbon/react';
-import { ChartRelationship, FlowConnection, Bot, ArrowRight, Time } from '@carbon/icons-react';
+import { ChartRelationship, FlowConnection, Bot, ArrowRight, Time, Document, Code } from '@carbon/icons-react';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -10,16 +10,18 @@ const Home = () => {
       {/* ── Hero ─────────────────────────────────────────────── */}
       <div className="hero-banner">
         <div className="hero-banner__content">
-          <span className="hero-banner__eyebrow">IBM Bob · Bitbucket Pipelines</span>
+          <span className="hero-banner__eyebrow">IBM Bob · Laboratorios Prácticos</span>
           <h1 className="cds--heading-expressive-06 hero-banner__title">
             Lleva la IA a todo el ciclo de vida del software
           </h1>
           <p className="cds--body-long-02 hero-banner__lede">
-            Dos laboratorios prácticos para orquestar a <strong>IBM Bob</strong> — el
+            Cuatro laboratorios prácticos para orquestar a <strong>IBM Bob</strong> — el
             agente de IA para el SDLC — desde tu terminal y dentro de tus pipelines:
-            arquitectura, skills, revisión de código y corrección automática de issues.
+            documentación, desarrollo seguro, arquitectura, skills, revisión de código y corrección automática de issues.
           </p>
           <div className="hero-banner__badges">
+            <span className="hero-pill hero-pill--lab1"><Time size={16} /> Lab 1 · 20 min</span>
+            <span className="hero-pill hero-pill--lab2"><Time size={16} /> Lab 2 · 20 min</span>
             <span className="hero-pill hero-pill--lab3"><Time size={16} /> Lab 3 · 20 min</span>
             <span className="hero-pill hero-pill--lab4"><Time size={16} /> Lab 4 · 40 min</span>
           </div>
@@ -42,7 +44,7 @@ const Home = () => {
               Un compañero de desarrollo, no un chatbot
             </h3>
             <p className="cds--body-long-01">
-              Bob (GA desde abril de 2026) es un agente de IA que trabaja en todo el SDLC:
+              Bob es un agente de IA que trabaja en todo el SDLC:
               planificar, diseñar, codear, testear y modernizar. Su CLI <strong>Bob Shell</strong>{' '}
               vive en tu terminal, lee múltiples archivos, razona sobre arquitectura y
               seguridad, y deja un registro auto-documentado de cada acción.
@@ -69,11 +71,43 @@ const Home = () => {
       <Grid style={{ marginBottom: '1rem' }}>
         <Column sm={4} md={8} lg={16}>
           <h2 className="cds--heading-expressive-04" style={{ marginBottom: '1rem' }}>
-            Los dos laboratorios
+            Laboratorios Prácticos
           </h2>
         </Column>
       </Grid>
       <Grid narrow>
+        <Column sm={4} md={4} lg={8} style={{ paddingRight: '1rem', marginBottom: '1rem' }}>
+          <ClickableTile
+            className="lab-card lab-card--lab1"
+            onClick={() => navigate('/lab1')}
+          >
+            <div className="lab-card__top">
+              <Document size={32} />
+              <span className="lab-card__time">20 min</span>
+            </div>
+            <h3 className="cds--heading-expressive-03">Lab 1 · Documentación de Código</h3>
+            <p className="cds--body-long-01" style={{ flexGrow: 1 }}>
+              Explora una base de código desconocida usando el modo Ask y genera especificaciones API y README completos usando el modo Plan de forma automatizada.
+            </p>
+            <span className="lab-card__cta">Empezar Lab 1 <ArrowRight size={16} /></span>
+          </ClickableTile>
+        </Column>
+        <Column sm={4} md={4} lg={8} style={{ paddingRight: '1rem', marginBottom: '1rem' }}>
+          <ClickableTile
+            className="lab-card lab-card--lab2"
+            onClick={() => navigate('/lab2')}
+          >
+            <div className="lab-card__top">
+              <Code size={32} />
+              <span className="lab-card__time">20 min</span>
+            </div>
+            <h3 className="cds--heading-expressive-03">Lab 2 · Desarrollo &amp; Mejora</h3>
+            <p className="cds--body-long-01" style={{ flexGrow: 1 }}>
+              Detecta y corrige vulnerabilidades críticas (SQL Injection, XSS, secretos) en una aplicación vulnerable usando el modo Plan y Agent.
+            </p>
+            <span className="lab-card__cta">Empezar Lab 2 <ArrowRight size={16} /></span>
+          </ClickableTile>
+        </Column>
         <Column sm={4} md={4} lg={8} style={{ paddingRight: '1rem', marginBottom: '1rem' }}>
           <ClickableTile
             className="lab-card lab-card--lab3"
@@ -116,10 +150,12 @@ const Home = () => {
         <Column sm={4} md={8} lg={16}>
           <Tile style={{ backgroundColor: '#edf5ff' }}>
             <h3 className="cds--heading-expressive-03" style={{ marginBottom: '1rem' }}>
-              Agenda de la sesión (60 min)
+              Agenda de la sesión
             </h3>
             <ul className="agenda-list">
-              <li><span className="agenda-list__dot agenda-list__dot--lab3" /> <strong>Lab 3 (20 min):</strong> Parte A — Bob crudo sobre arquitectura (5′) · Parte B — crea tu primera Skill (10′) · Parte C — re-ejecuta con la Skill y compara (5′).</li>
+              <li><span className="agenda-list__dot agenda-list__dot--lab1" /> <strong>Lab 1 (20 min):</strong> Exploración con Ask (10′) · Documentación y README con Plan (10′).</li>
+              <li><span className="agenda-list__dot agenda-list__dot--lab2" /> <strong>Lab 2 (20 min):</strong> Análisis con Plan (10′) · Corrección de SQLi, XSS y secretos con Agent (10′).</li>
+              <li><span className="agenda-list__dot agenda-list__dot--lab3" /> <strong>Lab 3 (20 min):</strong> Bob crudo sobre arquitectura (5′) · Crear Skill (10′) · Re-ejecutar con Skill (5′).</li>
               <li><span className="agenda-list__dot agenda-list__dot--lab4" /> <strong>Lab 4 (40 min):</strong> Setup de tokens (8′) · Arquitectura &amp; pipelines (10′) · Retos en vivo (18′) · Cierre (4′).</li>
             </ul>
           </Tile>
@@ -130,3 +166,4 @@ const Home = () => {
 };
 
 export default Home;
+
