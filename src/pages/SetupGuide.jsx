@@ -66,7 +66,7 @@ git push origin --tags`}
 
         <h4 className="cds--heading-expressive-02" style={{ marginBottom: '0.5rem' }}>B. Llave de Bob Shell (`BOBSHELL_API_KEY`)</h4>
         <p className="cds--body-long-01" style={{ marginBottom: '1rem' }}>
-          Solicita al instructor del laboratorio tu llave de acceso para autenticar al agente Bob Shell en tus pipelines.
+          Ingresa a <a href="https://bob.ibm.com/admin/bobalytics" target="_blank" rel="noreferrer">bob.ibm.com/admin/bobalytics</a> para generar tu API key personal. Asegúrate de seleccionarla con alcance (scope) de <strong>Inference</strong>. Si tienes cualquier duda sobre cómo obtenerla, pregunta al instructor del laboratorio.
         </p>
         <InlineNotification
           kind="warning"

@@ -193,15 +193,15 @@ git push origin dev`}
             <code>bobshell-deep-review.md</code> con el reporte completo de vulnerabilidades.
           </p>
         </AccordionItem>
-        <AccordionItem title="¿Cómo funciona bob-label-issue y la integración con Jira?">
+        <AccordionItem title="¿Se puede integrar Bob con herramientas como Jira?">
           <p className="cds--body-long-01" style={{ marginBottom: '0.75rem' }}>
-            El pipeline <code>bob-label-issue</code> está pensado para conectarse de forma opcional a <strong>Jira Cloud</strong> mediante su API REST. Bob lee la descripción del ticket de Jira, analiza de qué se trata (si es un bug, una mejora, una tarea de seguridad) y le asigna etiquetas y prioridades automáticamente en tu tablero de Jira.
+            Sí. Aunque este laboratorio está completamente enfocado en flujos nativos de Bitbucket Cloud, Bob Shell puede integrarse con plataformas externas de gestión de incidencias como <strong>Jira Cloud</strong>.
           </p>
           <p className="cds--body-long-01" style={{ marginBottom: '0.75rem' }}>
-            <strong>¿Es necesario para este laboratorio?</strong> No, es totalmente opcional (diseñado para la rama enterprise). Dado que aquí no estamos integrando Jira, no tienes que configurar las variables <code>JIRA_*</code>.
+            En un entorno de producción, Bob es capaz de conectarse a la API de Jira, leer la descripción de un ticket de soporte, analizar su contexto y asignarle etiquetas o prioridades directamente en tu tablero del proyecto.
           </p>
           <p className="cds--body-long-01" style={{ marginBottom: 0 }}>
-            Si deseas clasificar elementos de forma nativa en Bitbucket, puedes utilizar el pipeline <code>bob-label-pr</code> pasándole el <code>PR_ID</code> de tu Pull Request de forma manual.
+            Para este laboratorio práctico de Bitbucket, realizamos la categorización de forma nativa sobre los Pull Requests mediante el pipeline <code>bob-label-pr</code> (activado con el comando <code>/bob label</code> en comentarios o pasándole el <code>PR_ID</code> de tu Pull Request de forma manual).
           </p>
         </AccordionItem>
         <AccordionItem title="¿Cómo reinicio el laboratorio?">
