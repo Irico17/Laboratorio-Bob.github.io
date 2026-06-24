@@ -42,10 +42,10 @@ const Home = () => {
             <div>
               <Code size={28} style={{ color: '#24a148', marginBottom: '0.75rem' }} />
               <h3 className="cds--heading-expressive-03" style={{ marginBottom: '0.75rem' }}>
-                IBM Bob CLI
+                IBM Bob
               </h3>
               <p className="cds--body-long-01" style={{ marginBottom: '1.5rem' }}>
-                Descarga e instala la interfaz de línea de comandos de Bob en tu terminal local (requiere Node.js 20 o superior).
+                Descarga e instala IBM Bob en tu entorno local para poder realizar las actividades guiadas.
               </p>
             </div>
             <a 
@@ -55,7 +55,7 @@ const Home = () => {
               className="cds--btn cds--btn--secondary"
               style={{ width: '100%', textAlign: 'center', display: 'inline-block', textDecoration: 'none' }}
             >
-              Descargar Bob CLI
+              Descargar IBM Bob
             </a>
           </Tile>
         </Column>
